@@ -1,0 +1,10 @@
+<p class="component-title">
+</p>
+<div>
+  <ul>
+    <li *ngFor="let user of usersMysql">
+     {{user.id}} {{ user.firstname }} {{user.lastname}} {{user.address}}
+    </li>
+  </ul>
+  <hr>
+</div>
