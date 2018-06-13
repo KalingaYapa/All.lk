@@ -76,7 +76,7 @@ export class MysqlService {
           if (response.success) {
             localStorage.setItem(
                 environment.tokenName,
-                response.data.access_token
+                response.access_token
             );
             this.loggedIn = true;
           } else {

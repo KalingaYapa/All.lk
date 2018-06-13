@@ -246,6 +246,7 @@ class UserController extends ActiveController
             $responseData = [
                 'id' => (int)$id,
                 'access_token' => $user->access_token,
+                'success' => true
             ];
 
             return $responseData;
