@@ -4,18 +4,60 @@
     <div style="margin-left: 100px;margin-bottom: 10px;" class="col-md-6">
       <h1 style="font-family: 'Bodoni MT';font-size: 500%">All.lk</h1>
     </div>
-    <form [formGroup] = "loginForm" (ngSubmit)="loginUser()">
-      <div class="form-group col-md-10">
-        <label for="inputEmail4">Email</label>
-        <input type="email" class="form-control" formControlName="username" id="inputEmail4" placeholder="Email">
+    <!--<form [formGroup] = "loginForm" (ngSubmit)="loginUser()">-->
+      <!--<div class="form-group col-md-10">-->
+        <!--<label for="inputEmail4">Email</label>-->
+        <!--<input type="email" class="form-control" formControlName="username" id="inputEmail4" placeholder="Email">-->
+      <!--</div>-->
+      <!--<div class="form-group col-md-10">-->
+        <!--<label for="inputPassword4">Password</label>-->
+        <!--<input type="password" class="form-control" formControlName="password" id="inputPassword4" placeholder="Password">-->
+      <!--</div>-->
+      <!--<div class="form-group col-md-11">-->
+        <!--<button type="submit" class="btn btn-primary col-md-5">Login</button>-->
+        <!--<button type="submit" class="btn btn-primary col-md-5" style="margin-left: 23px">Register</button>-->
+      <!--</div>-->
+    <!--</form>-->
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+      <h1>Login</h1>
+      <p class="text-muted">Sign In to your account</p>
+
+      <div class="form-group row" [ngClass]="{'has-danger': !isValid('username')}">
+        <div class="col-md-12">
+          <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="icon-user"></i>
+                  </span>
+            <input class="form-control" type="text" placeholder="Username" [formControl]="loginForm.controls['username']" [ngClass]="{'form-control-danger': !isValid('username')}">
+          </div>
+          <span class="help-block help-block-error" *ngIf="!formErrors.username.valid">{{formErrors.username.message}}</span>
+        </div>
       </div>
-      <div class="form-group col-md-10">
-        <label for="inputPassword4">Password</label>
-        <input type="password" class="form-control" formControlName="password" id="inputPassword4" placeholder="Password">
+      <div class="form-group row" [ngClass]="{'has-danger': !isValid('password')}">
+        <div class="col-md-12">
+          <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="icon-lock"></i>
+                  </span>
+            <input class="form-control" type="password" placeholder="Password" [formControl]="loginForm.controls['password']" [ngClass]="{'form-control-danger': !isValid('password')}">
+          </div>
+          <span class="help-block help-block-error" *ngIf="!formErrors.password.valid">{{formErrors.password.message}}</span>
+        </div>
       </div>
-      <div class="form-group col-md-11">
-        <button type="submit" class="btn btn-primary col-md-5">Login</button>
-        <button type="submit" class="btn btn-primary col-md-5" style="margin-left: 23px">Register</button>
+      <div class="row">
+        <div class="col-6">
+          <button type="submit" class="btn btn-primary px-2" [disabled]="!loginForm.valid || submitted == true">Login
+            <spinner *ngIf="submitted"></spinner>
+          </button>
+
+        </div>
+        <div class="col-6 text-right">
+          <a [routerLink]="['/password-reset-request']" class="btn btn-link px-0">Forgot password?</a>
+        </div>
+        <div *ngIf="errorMessage" class="col-12 error-block mt-2">
+          <div class="alert alert-danger">{{errorMessage}}</div>
+        </div>
+
       </div>
     </form>
   </div>

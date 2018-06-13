@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-  apiHost: 'http://localhost:8080/api/v1',
-  // apiHost: '//localhost/api/v1',
+  apiHost: 'http://localhost:8080/v1',
   tokenName: 'frontend-token'
 };
 

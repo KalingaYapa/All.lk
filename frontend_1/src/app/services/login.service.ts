@@ -3,6 +3,7 @@ import {Http,Headers} from "@angular/http";
 import {promise} from "selenium-webdriver";
 import {Observable} from "rxjs";
 import {GlobalService} from './global.service'
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class LoginService {
@@ -13,10 +14,11 @@ export class LoginService {
       private globalService: GlobalService
   ) { }
 
-  public logIn(object): boolean {
-    let url: string = `${this.globalService.apiHost}/user/login`;
-      this._http.post(url, object.value, {headers: new Headers({'Content-Type': 'application/json'})});
-     return true;
-  }
-
+  // public logIn(object): void {
+  //   let url: string = `${this.globalService.apiHost}/user/test`;
+  //      // this._http.get(url, object.value, {headers: new Headers({'Content-Type': 'application/json'})});
+  //    this._http.get(url).pipe(map(res => {
+  //     console.log(res);
+  //   }));
+  // }
 }

@@ -15,10 +15,10 @@ class LoginForm extends Model
 {
     public $username;
     public $password;
+    public $roles = [];
     public $rememberMe = true;
-
+    /** @var User */
     private $_user = false;
-
 
     /**
      * @return array the validation rules.
@@ -51,6 +51,24 @@ class LoginForm extends Model
                 $this->addError($attribute, 'Incorrect username or password.');
             }
         }
+    }
+
+    /**
+     * Finds user by [[username]]
+     *
+     * @return User|null
+     */
+    public function getUserByUsername()
+    {
+        // Roles must be set to get an user
+        if (empty($this->roles)) {
+            return null;
+        }
+        if ($this->_user === false) {
+            $this->_user = User::findByUsernameWithRoles($this->username, $this->roles);
+        }
+
+        return $this->_user;
     }
 
     /**

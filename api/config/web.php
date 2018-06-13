@@ -85,6 +85,7 @@ $config = [
                         'GET me' => 'me',
                         'POST me' => 'me-update',
                         'OPTIONS me' => 'options',
+                        'GET test' => 'test',
                     ]
                 ]
             ]

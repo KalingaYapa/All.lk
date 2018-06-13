@@ -20,10 +20,10 @@ export class AlladdsComponent implements OnInit {
 
   private getUsersMysql() {
 
-    this._mysqlService.getUserDetailsFromDB().subscribe( data => {
-      this.loading = false;
-      this.usersMysql = data
-    });
+    // this._mysqlService.getUserDetailsFromDB().subscribe( data => {
+    //   this.loading = false;
+    //   this.usersMysql = data
+    // });
 
   }
 }
