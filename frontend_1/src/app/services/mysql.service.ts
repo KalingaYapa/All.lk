@@ -17,8 +17,6 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 
-
-
 @Injectable()
 export class MysqlService {
   loggedIn = false;
@@ -60,7 +58,7 @@ export class MysqlService {
     });
 
     return this.httpClient
-        .post<ResponseBody>(
+        .post(
             this.globalService.apiHost + '/user/login',
             JSON.stringify({
               LoginForm: {
@@ -73,10 +71,10 @@ export class MysqlService {
             }
         )
         .map(response => {
-          if (response.success) {
+          if (response["success"]) {
             localStorage.setItem(
                 environment.tokenName,
-                response.access_token
+                response["access_token"]
             );
             this.loggedIn = true;
           } else {

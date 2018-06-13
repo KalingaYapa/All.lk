@@ -95,7 +95,7 @@ export class LoginComponent implements OnInit {
         .login(elementValues.username, elementValues.password)
         .subscribe(
             result => {
-              if (result.success) {
+              if (result["success"]) {
                 this.router.navigate([this.returnURL]);
               } else {
                 this.errorMessage = 'Username or password is incorrect.';
