@@ -20,6 +20,7 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class MysqlService {
   loggedIn = false;
+  redirectURL = '';
 
   constructor(
       public httpClient: HttpClient,
@@ -109,6 +110,15 @@ export class MysqlService {
     }
 
     return Observable.throw(errorMessage);
+  }
+
+  public getJWTValue(): any {
+    if (this.isLoggedIn()) {
+      const token = this["getToken()"];
+      return this.jwtHelper.decodeToken(token);
+    } else {
+      return null;
+    }
   }
 
   public unauthorizedAccess(error: any): void {

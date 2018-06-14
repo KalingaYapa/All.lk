@@ -2,20 +2,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AppComponent } from './app.component';
-import { PostaddComponent } from './postadd/postadd.component';
-import { RegisterComponent } from './register/register.component';
 import { AppRoutingModule } from './app-routing.module';
-import { CartComponent } from './cart/cart.component';
-import { LoginComponent } from './login/login.component';
 import {HttpClientModule} from '@angular/common/http';
 import { MysqlService} from './services/mysql.service';
-import { AlladdsComponent } from './alladds/alladds.component';
 import { FormsModule ,ReactiveFormsModule}   from '@angular/forms';
 import {LoginService} from "./services/login.service";
 import {GlobalService} from './services/global.service';
+
 import { environment } from './../environments/environment';
+import { AuthGuard } from './services/auth.guard';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { SharedModule } from './shared/shared.module';
+// Layouts
+import { FrontendLayoutComponent } from './layout/frontend-layout.component';
+import { P404Component } from './page/404.component';
 
 export function tokenGetter() {
   return localStorage.getItem(environment.tokenName);
@@ -24,11 +24,8 @@ export function tokenGetter() {
 @NgModule({
   declarations: [
     AppComponent,
-    PostaddComponent,
-    RegisterComponent,
-    CartComponent,
-    LoginComponent,
-    AlladdsComponent
+    FrontendLayoutComponent,
+    P404Component
   ],
   imports: [
     BrowserModule,
@@ -52,6 +49,7 @@ export function tokenGetter() {
     provide: LocationStrategy,
     useClass: HashLocationStrategy
     },
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
