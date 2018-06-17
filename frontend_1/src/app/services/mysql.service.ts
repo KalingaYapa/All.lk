@@ -112,9 +112,13 @@ export class MysqlService {
     return Observable.throw(errorMessage);
   }
 
+  public  getToken(): any {
+    return localStorage.getItem(environment.tokenName);
+  }
+
   public getJWTValue(): any {
     if (this.isLoggedIn()) {
-      const token = this["getToken()"];
+      const token = this.getToken();
       return this.jwtHelper.decodeToken(token);
     } else {
       return null;

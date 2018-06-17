@@ -285,6 +285,32 @@ class UserController extends ActiveController
         }
     }
 
+    /**
+     * Return logged in user information
+     *
+     * @return array
+     * @throws NotFoundHttpException
+     */
+    public function actionMe()
+    {
+        $user = User::findIdentity(\Yii::$app->user->getId());
+
+        if ($user) {
+            $response = \Yii::$app->getResponse();
+            $response->setStatusCode(200);
+
+            return [
+                'username' => $user->username,
+                'email' => $user->email,
+                'last_login_at' => $user->last_login_at,
+                'last_login_ip' => $user->last_login_ip,
+            ];
+        } else {
+            // Validation error
+            throw new NotFoundHttpException("Object not found");
+        }
+    }
+
     public function actionTest()
     {
         $response = \Yii::$app->getResponse();

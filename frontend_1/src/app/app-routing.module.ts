@@ -25,17 +25,17 @@ export const routes: Routes = [
     pathMatch: 'full',
     loadChildren: './index/index.module#IndexModule'
   },
-  // {
-  //   path: '',
-  //   component: FrontendLayoutComponent,
-  //   canActivate: [AuthGuard],
-  //   children: [
-  //     {
-  //       path: 'account',
-  //       loadChildren: './app/account/account.module#AccountModule'
-  //     }
-  //   ]
-  // },
+  {
+    path: '',
+    component: FrontendLayoutComponent,
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: 'account',
+        loadChildren: './account/account.module#AccountModule'
+      }
+    ]
+  },
   {
     path: '',
     component: FrontendLayoutComponent,

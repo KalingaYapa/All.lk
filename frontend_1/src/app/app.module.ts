@@ -8,6 +8,7 @@ import { MysqlService} from './services/mysql.service';
 import { FormsModule ,ReactiveFormsModule}   from '@angular/forms';
 import {LoginService} from "./services/login.service";
 import {GlobalService} from './services/global.service';
+import { UserDataService } from './services/user-data.service';
 
 import { environment } from './../environments/environment';
 import { AuthGuard } from './services/auth.guard';
@@ -49,7 +50,8 @@ export function tokenGetter() {
     provide: LocationStrategy,
     useClass: HashLocationStrategy
     },
-    AuthGuard
+    AuthGuard,
+    UserDataService
   ],
   bootstrap: [AppComponent]
 })
