@@ -31,9 +31,9 @@
     </nav>
     <nav class="my-0" *ngIf="mysqlService.isLoggedIn() === true">
         <span class="text-dark mr-2 font-weight-bold">{{userData.username}} ({{userData.roleLabel}})</span>
-        <a class="btn btn-link mr-2" routerLinkActive="active" [routerLink]="['/dashboard']">DashBoard</a>
-        <a class="btn btn-link mr-2" routerLinkActive="active" [routerLink]="['/account']">Account</a>
-        <a class="btn btn-link" routerLinkActive="active" [routerLink]="['/logout']">Logout</a>
+        <a class="btn btn-outline-primary mr-2" routerLinkActive="active" [routerLink]="['/dashboard']">DashBoard</a>
+        <a class="btn btn-outline-primary mr-2" routerLinkActive="active" [routerLink]="['/account']">Account</a>
+        <a class="btn btn-outline-danger mr-2" routerLinkActive="active" [routerLink]="['/logout']">Logout</a>
     </nav>
 </div>
 
