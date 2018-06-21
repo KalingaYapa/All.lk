@@ -5,7 +5,8 @@ import { UserDataService } from '../services/user-data.service';
 
 @Component({
   selector: 'app-account',
-  templateUrl: './account.component.html'
+  templateUrl: './account.component.html',
+  styleUrls: ['../../assets/bootstrap/css/bootstrap.css']
 })
 export class AccountComponent implements OnInit {
   errorMessage: string;

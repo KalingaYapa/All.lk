@@ -11,7 +11,8 @@ import { MysqlService } from '../services/mysql.service';
 
 @Component({
   selector: 'app-account-edit',
-  templateUrl: './account-edit.component.html'
+  templateUrl: './account-edit.component.html',
+  styleUrls: ['../../assets/bootstrap/css/bootstrap.css']
 })
 export class AccountEditComponent implements OnInit {
   errorMessage: string;
