@@ -33,6 +33,10 @@ export const routes: Routes = [
       {
         path: 'account',
         loadChildren: './account/account.module#AccountModule'
+      },
+      {
+        path: 'dashboard',
+        loadChildren: './dashbord/dashbord.module#DashbordModule'
       }
     ]
   },

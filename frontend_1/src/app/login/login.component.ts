@@ -86,7 +86,7 @@ export class LoginComponent implements OnInit {
     this.resetFormErrors();
     this.mysqlservice.logout();
     // get return url from route parameters or default to '/'
-    this.returnURL = this.activatedRoute.snapshot.queryParams['r'] || '/';
+    this.returnURL = this.activatedRoute.snapshot.queryParams['r'] || '/dashboard';
   }
 
   public onSubmit(elementValues: any) {
